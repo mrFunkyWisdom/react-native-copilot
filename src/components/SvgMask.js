@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from 'react';
 import {
   View,
@@ -6,32 +5,21 @@ import {
   Easing,
   Dimensions,
 } from 'react-native';
-// import { Svg } from 'expo';
 import Svg from 'react-native-svg';
 import AnimatedSvgPath from './AnimatedPath';
 
-import type { valueXY } from '../types';
-
 const windowDimensions = Dimensions.get('window');
-const path = (size, position, canvasSize): string => `M0,0H${canvasSize.x}V${canvasSize.y}H0V0ZM${position.x._value},${position.y._value}H${position.x._value + size.x._value}V${position.y._value + size.y._value}H${position.x._value}V${position.y._value}Z`;
 
-type Props = {
-  size: valueXY,
-  position: valueXY,
-  style: object | number | Array,
-  easing: func,
-  animationDuration: number,
-  animated: boolean,
-  backdropColor: string,
-};
+const path = (size, position, canvasSize) =>
+  `M0 0H${canvasSize.x}V${canvasSize.y}H0 V0Z
+  M${position.x._value} ${position.y._value}
+  H${position.x._value + size.x._value}
+  V${position.y._value + size.y._value}
+  H${position.x._value}
+  V${position.y._value}Z`;
 
-type State = {
-  size: Animated.ValueXY,
-  position: Animated.ValueXY,
-  canvasSize: ?valueXY,
-};
 
-class SvgMask extends Component<Props, State> {
+class SvgMask extends Component {
   static defaultProps = {
     animationDuration: 300,
     easing: Easing.linear,
@@ -58,14 +46,14 @@ class SvgMask extends Component<Props, State> {
     }
   }
 
-  animationListener = (): void => {
-    const d: string = path(this.state.size, this.state.position, this.state.canvasSize);
+  animationListener = () => {
+    const d = path(this.state.size, this.state.position, this.state.canvasSize);
     if (this.mask) {
       this.mask.setNativeProps({ d });
     }
   };
 
-  animate = (size: valueXY = this.props.size, position: valueXY = this.props.position): void => {
+  animate = (size: valueXY = this.props.size, position: valueXY = this.props.position) => {
     if (this.props.animated) {
       Animated.parallel([
         Animated.timing(this.state.size, {
@@ -92,7 +80,7 @@ class SvgMask extends Component<Props, State> {
         y: height,
       },
     });
-  }
+  };
 
   render() {
     return (

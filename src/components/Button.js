@@ -4,16 +4,17 @@ import { View, Text } from 'react-native';
 
 import styles from './style';
 
-type Props = {
-  wrapperStyle: Object | number | Array,
-  style: Object | number | Array,
-  rest: Object | number | Array,
-};
-
-const Button = ({ wrapperStyle, style, ...rest }: Props) => (
+const Button = ({ wrapperStyle, style, buttonsTextStyle, ...rest }) => (
   <View style={[styles.button, wrapperStyle]}>
-    <Text style={[styles.buttonText, style]} {...rest} />
+    <Text style={[buttonsTextStyle, style]} {...rest} />
   </View>
 );
+
+Button.defaultProps = {
+  buttonsTextStyle: {
+    color: '#fd8524',
+    fontWeight: 'bold',
+  },
+};
 
 export default Button;

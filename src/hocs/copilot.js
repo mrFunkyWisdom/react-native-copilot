@@ -12,21 +12,12 @@ import { OFFSET_WIDTH } from '../components/style';
 
 import { getFirstStep, getLastStep, getStepNumber, getPrevStep, getNextStep } from '../utilities';
 
-import type { Step, CopilotContext } from '../types';
-
 /*
 This is the maximum wait time for the steps to be registered before starting the tutorial
 At 60fps means 2 seconds
 */
 const MAX_START_TRIES = 120;
 
-type State = {
-  steps: { [string]: Step },
-  currentStep: ?Step,
-  visible: boolean,
-  androidStatusBarVisible: boolean,
-  backdropColor: string
-};
 
 const copilot = ({
   overlay,
@@ -35,6 +26,7 @@ const copilot = ({
   animated,
   androidStatusBarVisible,
   backdropColor,
+  buttonsTextStyle,
   verticalOffset = 0,
 } = {}) =>
   (WrappedComponent) => {
@@ -192,6 +184,7 @@ const copilot = ({
               animated={animated}
               androidStatusBarVisible={androidStatusBarVisible}
               backdropColor={backdropColor}
+              buttonsTextStyle={buttonsTextStyle}
               ref={(modal) => { this.modal = modal; }}
             />
           </View>
