@@ -13,6 +13,7 @@ const Button = ({ wrapperStyle, style, buttonsTextStyle, ...rest }) => (
 Button.defaultProps = {
   buttonsTextStyle: {
     color: '#fd8524',
+    fontSize: 18,
     fontWeight: 'bold',
   },
 };

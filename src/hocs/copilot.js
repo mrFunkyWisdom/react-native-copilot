@@ -183,7 +183,7 @@ const copilot = ({
               overlay={overlay}
               animated={animated}
               androidStatusBarVisible={androidStatusBarVisible}
-              backdropColor={backdropColor}
+              backdropColor={backdropColor || 'rgba(0,0,0,0.8)'}
               buttonsTextStyle={buttonsTextStyle}
               ref={(modal) => { this.modal = modal; }}
             />

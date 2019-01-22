@@ -28,11 +28,12 @@ export default StyleSheet.create({
     paddingTop: 15,
     paddingHorizontal: 15,
     overflow: 'hidden',
-    borderWidth: 1,
+    borderWidth: 3,
     borderColor: '#fff'
   },
   tooltipText: {
     color: '#fff',
+    fontSize: 16,
     fontWeight: 'bold'
   },
   tooltipContainer: {
@@ -40,10 +41,6 @@ export default StyleSheet.create({
   },
   button: {
     padding: 10,
-  },
-  buttonText: {
-    color: '#fd8524',
-    fontWeight: 'bold',
   },
   bottomBar: {
     marginTop: 10,

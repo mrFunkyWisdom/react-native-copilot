@@ -21,7 +21,7 @@ const path = (size, position, canvasSize) =>
 
 class SvgMask extends Component {
   static defaultProps = {
-    animationDuration: 300,
+    animationDuration: 500,
     easing: Easing.linear,
   };
 
@@ -93,7 +93,6 @@ class SvgMask extends Component {
                   ref={(ref) => { this.mask = ref; }}
                   fill={this.props.backdropColor}
                   fillRule="evenodd"
-                  strokeWidth={1}
                   d={path(this.state.size, this.state.position, this.state.canvasSize)}
                 />
               </Svg>
